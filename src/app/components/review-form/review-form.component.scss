@@ -1,0 +1,100 @@
+.review-form-card {
+  margin: 20px 0;
+  max-width: 600px;
+
+  mat-card-header {
+    mat-card-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #333;
+      font-size: 1.2rem;
+
+      mat-icon {
+        color: #666;
+      }
+    }
+  }
+
+  .review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .full-width {
+      width: 100%;
+    }
+
+    .rating-section {
+      padding: 16px 0;
+
+      .rating-label {
+        display: block;
+        font-weight: 500;
+        margin-bottom: 16px;
+        color: #333;
+        font-size: 1rem;
+      }
+
+      .rating-slider {
+        width: 100%;
+        margin-bottom: 8px;
+      }
+
+      .rating-description {
+        text-align: center;
+        font-weight: 500;
+
+        .excellent {
+          color: #4caf50;
+        }
+
+        .good {
+          color: #2196f3;
+        }
+
+        .average {
+          color: #ff9800;
+        }
+
+        .poor {
+          color: #f44336;
+        }
+      }
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: flex-end;
+      margin-top: 20px;
+
+      .submit-button {
+        min-width: 140px;
+
+        .spinning {
+          animation: spin 1s linear infinite;
+        }
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .review-form-card {
+    margin: 15px 0;
+
+    .review-form .form-actions {
+      flex-direction: column;
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+}

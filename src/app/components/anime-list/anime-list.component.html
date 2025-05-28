@@ -1,0 +1,50 @@
+<div class="anime-list-container">
+  <div class="header-section">
+    <h1 class="page-title">Seasonal Anime</h1>
+    <p class="season-info">Current Season: {{currentSeason.season | titlecase}} {{currentSeason.year}}</p>
+  </div>
+
+  <div class="filter-section">
+    <mat-card class="filter-card">
+      <div class="filter-controls">
+        <mat-form-field appearance="outline">
+          <mat-label>Season</mat-label>
+          <mat-select [(value)]="selectedSeason" (selectionChange)="onFilterChange()">
+            <mat-option *ngFor="let season of seasons" [value]="season.value">
+              {{season.label}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Year</mat-label>
+          <mat-select [(value)]="selectedYear" (selectionChange)="onFilterChange()">
+            <mat-option *ngFor="let year of years" [value]="year">
+              {{year}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="getCurrentSeasonAnime()">
+          <mat-icon>schedule</mat-icon>
+          Current Season
+        </button>
+      </div>
+    </mat-card>
+  </div>
+
+  <div class="anime-grid" *ngIf="filteredAnimeList.length > 0; else noAnime">
+    <app-anime-card 
+      *ngFor="let anime of filteredAnimeList" 
+      [anime]="anime">
+    </app-anime-card>
+  </div>
+
+  <ng-template #noAnime>
+    <div class="no-anime-message">
+      <mat-icon class="large-icon">tv_off</mat-icon>
+      <h2>No anime found</h2>
+      <p>Try adjusting your filters or check back later for new releases!</p>
+    </div>
+  </ng-template>
+</div>

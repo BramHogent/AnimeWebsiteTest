@@ -1,0 +1,211 @@
+.anime-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .card-image-container {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+
+    .anime-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover .anime-image {
+      transform: scale(1.05);
+    }
+
+    .image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.7) 0%,
+        transparent 30%,
+        transparent 70%,
+        rgba(0, 0, 0, 0.8) 100%
+      );
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 12px;
+
+      .status-badge, .rating-badge {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        backdrop-filter: blur(10px);
+
+        mat-icon {
+          font-size: 16px;
+          height: 16px;
+          width: 16px;
+        }
+      }
+
+      .status-badge {
+        background: rgba(255, 255, 255, 0.9);
+        color: #333;
+      }
+
+      .rating-badge {
+        background: rgba(255, 193, 7, 0.9);
+        color: #333;
+
+        mat-icon {
+          color: #ff6f00;
+        }
+      }
+    }
+  }
+
+  mat-card-header {
+    padding: 16px 16px 8px 16px;
+
+    .anime-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 4px;
+      color: #333;
+    }
+
+    .english-title {
+      font-size: 0.9rem;
+      color: #666;
+      font-style: italic;
+    }
+  }
+
+  mat-card-content {
+    padding: 0 16px 16px 16px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    .anime-info {
+      margin-bottom: 12px;
+
+      .info-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 6px;
+        font-size: 0.9rem;
+        color: #666;
+
+        .info-icon {
+          font-size: 16px;
+          height: 16px;
+          width: 16px;
+          color: #999;
+        }
+      }
+    }
+
+    .synopsis {
+      font-size: 0.9rem;
+      line-height: 1.4;
+      color: #555;
+      margin-bottom: 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex-grow: 1;
+    }
+
+    .genres {
+      margin-top: auto;
+
+      mat-chip-set {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+
+        .genre-chip {
+          font-size: 0.75rem;
+          height: 24px;
+          background-color: #f5f5f5;
+          color: #666;
+
+          &:hover {
+            background-color: #e0e0e0;
+          }
+        }
+      }
+    }
+  }
+
+  .card-actions {
+    padding: 8px 16px 16px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+      font-size: 0.85rem;
+
+      mat-icon {
+        font-size: 18px;
+        height: 18px;
+        width: 18px;
+        margin-right: 4px;
+      }
+    }
+  }
+
+  // Status-based styling
+  &.status-airing {
+    border-left: 4px solid #4caf50;
+  }
+
+  &.status-finished {
+    border-left: 4px solid #2196f3;
+  }
+
+  &.status-upcoming {
+    border-left: 4px solid #ff9800;
+  }
+}
+
+@media (max-width: 768px) {
+  .anime-card {
+    .card-image-container {
+      height: 250px;
+    }
+
+    mat-card-header .anime-title {
+      font-size: 1rem;
+    }
+
+    mat-card-content {
+      .synopsis {
+        -webkit-line-clamp: 2;
+      }
+
+      .genres mat-chip-set .genre-chip {
+        font-size: 0.7rem;
+        height: 22px;
+      }
+    }
+  }
+}

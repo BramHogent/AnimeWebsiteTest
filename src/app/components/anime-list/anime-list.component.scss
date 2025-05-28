@@ -1,0 +1,139 @@
+.anime-list-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+
+  .header-section {
+    text-align: center;
+    margin-bottom: 30px;
+
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .season-info {
+      font-size: 1.1rem;
+      color: #666;
+      margin: 0;
+    }
+  }
+
+  .filter-section {
+    margin-bottom: 30px;
+
+    .filter-card {
+      padding: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+
+      .filter-controls {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        flex-wrap: wrap;
+
+        mat-form-field {
+          min-width: 150px;
+          
+          ::ng-deep {
+            .mat-mdc-text-field-wrapper {
+              background-color: rgba(255, 255, 255, 0.1);
+              border-radius: 8px;
+            }
+
+            .mat-mdc-form-field-label {
+              color: rgba(255, 255, 255, 0.8) !important;
+            }
+
+            .mat-mdc-select-value {
+              color: white;
+            }
+
+            .mat-mdc-line {
+              background-color: rgba(255, 255, 255, 0.3);
+            }
+          }
+        }
+
+        button {
+          background: rgba(255, 255, 255, 0.2);
+          color: white;
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          backdrop-filter: blur(10px);
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.3);
+          }
+
+          mat-icon {
+            margin-right: 8px;
+          }
+        }
+      }
+    }
+  }
+
+  .anime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .no-anime-message {
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+
+    .large-icon {
+      font-size: 4rem;
+      height: 4rem;
+      width: 4rem;
+      margin-bottom: 20px;
+      opacity: 0.5;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 300;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin: 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .anime-list-container {
+    padding: 15px;
+
+    .header-section .page-title {
+      font-size: 2rem;
+    }
+
+    .filter-section .filter-card .filter-controls {
+      flex-direction: column;
+      align-items: stretch;
+
+      mat-form-field {
+        min-width: auto;
+        width: 100%;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+
+    .anime-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+}
