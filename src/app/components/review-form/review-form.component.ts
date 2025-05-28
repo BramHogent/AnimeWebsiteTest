@@ -69,8 +69,7 @@ export class ReviewFormComponent {
       });
     }
   }
-
-  getRatingColor(rating: number): string {
+  getRatingColor(rating: number): 'primary' | 'accent' | 'warn' {
     if (rating >= 8) return 'primary';
     if (rating >= 6) return 'accent';
     return 'warn';
